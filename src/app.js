@@ -16,10 +16,16 @@ const morganOption = (NODE_ENV === 'production')
 app.use(morgan(morganOption));
 app.use(cors());
 app.use(helmet());
+app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.send('Hello, boilerplate!');
+app.post('/', (req, res) => {
+  console.log(req.body)
+  res.send('POST request received.')
 });
+
+app.get('/', (req, res) =>{
+  res.send('GET request received.')
+})
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
